@@ -22,6 +22,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
 }
 
 body {
@@ -171,6 +172,12 @@ ul {
   font-size: 0.85rem;
 }
 
+@media (max-width: 420px) {
+  .brand__name {
+    display: none;
+  }
+}
+
 .nav {
   display: none;
   gap: 1.75rem;
@@ -295,11 +302,12 @@ ul {
 
 .hero__brand {
   margin: 0;
+  width: 100%;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(4.2rem, 18vw, 9.5rem);
-  line-height: 0.9;
-  letter-spacing: 0.04em;
+  font-size: clamp(2.85rem, 14vw, 9.5rem);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
   background: linear-gradient(
     180deg,
     #fff6e8 10%,
@@ -310,6 +318,13 @@ ul {
   background-clip: text;
   color: transparent;
   text-shadow: 0 0 80px rgba(232, 168, 74, 0.15);
+}
+
+@media (min-width: 640px) {
+  .hero__brand {
+    font-size: clamp(4.2rem, 16vw, 9.5rem);
+    letter-spacing: 0.04em;
+  }
 }
 
 .hero__lead {
