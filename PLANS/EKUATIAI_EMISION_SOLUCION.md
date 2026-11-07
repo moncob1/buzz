@@ -1,8 +1,18 @@
 # Solución: AirbnbFacturas → e-Kuatia'i
 
+## Sin clawcall (Paraguay)
+
+Clawcall/MCP no se puede autenticar desde Paraguay en este entorno.
+Canal alternativo: instrucciones en Drive/OneDrive + pegar al bot por el
+chat que ya uses (WhatsApp/Telegram/WebChat de OpenClaw, o Cursor chat
+con AirbnbFacturas).
+
+- Google Doc: https://docs.google.com/document/d/1QAW_usSZIENVMSsEZ4i3-kkElvyP0lsvhGQhQXAxRAs/edit
+- OneDrive: `AirbnbFacturas-REPARAR-ekuatiai.md` (raíz del drive)
+
 ## Timeline corregida (humano)
 
-- **Después del 26/10** el bot **sí** emitía sin problema.
+- **Desde el 26/10** el bot **sí** emitía sin problema.
 - El corte es **más reciente** (no usar 26/10 como fecha de rotura).
 - Portal e-Kuatia'i responde OK (verificado).
 - Emisión manual en PC/iPad del humano: OK.
