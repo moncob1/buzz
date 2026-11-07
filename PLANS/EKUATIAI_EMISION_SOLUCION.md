@@ -1,5 +1,47 @@
 # Solución: emitir facturas en e-Kuatia'i sin el 404 de Entrust
 
+## Rollback inmediato (pegar al bot AirbnbFacturas)
+
+Último DTE Aprobado del bot: `001-001-0000218` (23/10/2026).
+Desde el 26/10 el bot falla en Entrust (`esignsp` 404). En esta sesión se
+cambiaron las reglas de «Carga de factura e-kuatia» (limpiar cookies teraguapy
+por CDP, cerrar pestañas, STOP Emitir). Eso hay que deshacer.
+
+**Mensaje para pegar al bot:**
+
+```
+ROLLBACK — volver al flujo que usábamos antes del 26/10.
+
+1) ANULÁ y olvidá estas reglas nuevas:
+   - limpiar / borrar cookies de teraguapy.set.gov.py o esignsp (CDP o a mano)
+   - clearDataForOrigin / Network.deleteCookies en esos dominios
+   - cerrar pestañas teraguapy/esignsp “por las dudas” antes de cada Emitir
+   - STOP Emitir / modo asistido / firma humana obligatoria
+   - EMIT_REDIRECT_BROKEN como regla permanente
+   - tope rígido de 2 intentos que reemplazó el flujo anterior
+
+2) RESTAURÁ el flujo anterior:
+   - perfil Chrome: dnit-facturas + WARP (NO Fork-*)
+   - armar ficha → validar base+IVA=total → Preview → Emitir → Contributor/Entrust → PIN CCFE → Aprobado
+   - misma pestaña, click real en Emitir (no copiar URL de esignsp)
+   - dedup por (fecha, RUC receptor, monto); no inventar CDC ni número
+   - si hay pestaña esignsp con “No encontrado”/404: cerrarla y NO reutilizar ese signerProcessId
+
+3) PROHIBIDO de ahora en más:
+   - borrar cookies teraguapy “para probar” o antes de Emitir
+   - reemitir en bucle la misma venta cuando falla el redirect
+
+Confirmá en una línea: “Rollback aplicado — flujo pre-26/10 restaurado en Carga de factura e-kuatia”.
+Después intentá UNA sola emisión real (la pendiente más vieja) y reportá:
+OK + nº/CDC, o el error exacto de Entrust sin limpiar cookies.
+```
+
+Si tras el rollback el bot sigue en 404, hacé **una** factura chica a mano
+en la PC del bot (mismo perfil `dnit-facturas`) y respondé solo
+`manual-bot OK` o `manual-bot 404`.
+
+---
+
 ## Diagnóstico (evidencia acumulada)
 
 | Hecho | Conclusión |
